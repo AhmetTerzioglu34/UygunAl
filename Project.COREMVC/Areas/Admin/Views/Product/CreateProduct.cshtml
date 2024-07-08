@@ -1,0 +1,62 @@
+﻿@model CreateProductPageVm
+
+
+    <h1>
+        Ürün yaratmaya hoşgeldiniz
+        
+    </h1>
+
+<form asp-action="CreateProduct" asp-controller="Product" method="post" class="p-3 w-75 m-auto" enctype="multipart/form-data">
+
+    
+
+        <div class="form-group">
+            <label>
+                <span asp-validation-for="CreateProductPureVm.ProductName" class="text-danger">
+
+                </span>
+            </label>
+        <input asp-for="CreateProductPureVm.ProductName" class="form-control" placeholder="Ürün ismi giriniz" />
+        </div>
+   
+
+        <div class="form-group">
+            <label>
+                <span asp-validation-for="CreateProductPureVm.UnitPrice" class="text-danger">
+
+                </span>
+            </label>
+            <input asp-for="CreateProductPureVm.UnitPrice" class="form-control" placeholder="Fiyat giriniz" />
+        </div>
+
+  
+    <div class="form-group">
+        <label>
+            <span asp-validation-for="CreateProductPureVm.UnitsInStock" class="text-danger">
+
+            </span>
+        </label>
+        <input asp-for="CreateProductPureVm.UnitsInStock" class="form-control" placeholder="Stok giriniz" />
+    </div>
+
+         <div class="mb-3">
+     
+             <label>Kategori Seciniz</label>
+
+            <select asp-for="CreateProductPureVm.CategoryID" asp-items='new SelectList(Model.CategoryProductPureVms,"ID","CategoryName")'>
+           
+             </select>
+         </div>
+
+ 
+    <div class="mb-3">
+        <label>Fotoğraf seçiniz</label>
+        <input type="file" name="formFile" class="form-control" accept="image/*" />
+    </div>
+
+        <div class="form-group">
+            <button class="btn btn-primary"> Ürün ekle</button>
+        </div>
+    <div class="text-danger" asp-validation-summary="ModelOnly">
+    </div>
+    </form>

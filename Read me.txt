@@ -1,0 +1,6 @@
+
+[EmailAddress(ErrorMessage="Email formatýnda giriniz")]
+
+En son kaldýðýn yer  UpdateAttributePRoduct
+
+

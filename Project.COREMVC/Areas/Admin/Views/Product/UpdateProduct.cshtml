@@ -1,0 +1,60 @@
+﻿@model UpdateProductPageVm
+
+<h1>
+    Ürün güncellemeye hoşgeldiniz
+
+</h1>
+
+
+<form asp-action="UpdateProduct" asp-controller="Product" method="post" class="p-3 w-75 m-auto" enctype="multipart/form-data">
+    <input type="hidden"  asp-for="UpdateProductPureVm.ID"/>
+    <input type="hidden"  asp-for="UpdateProductPureVm.ImagePath"/>
+
+
+    <div class="form-group">
+        <label>
+            <span asp-validation-for="UpdateProductPureVm.ProductName" class="text-danger">
+
+            </span>
+        </label>
+        <input asp-for="UpdateProductPureVm.ProductName" class="form-control" placeholder="Ürün ismi giriniz" />
+    </div>
+
+
+    <div class="form-group">
+        <label>
+            <span asp-validation-for="UpdateProductPureVm.UnitPrice" class="text-danger">
+
+            </span>
+        </label>
+        <input asp-for="UpdateProductPureVm.UnitPrice" class="form-control" placeholder="Fiyat giriniz" />
+    </div>
+
+    <div class="form-group">
+        <label>
+            <span asp-validation-for="UpdateProductPureVm.UnitsInStock" class="text-danger">
+
+            </span>
+        </label>
+        <input asp-for="UpdateProductPureVm.UnitsInStock" class="form-control" placeholder="Stok giriniz" />
+    </div>
+
+    <div class="mb-3">
+
+        <label>Kategori Seciniz</label>
+
+        <select asp-for="UpdateProductPureVm.CategoryID" asp-items='new SelectList(Model.CategoryProductPureVms,"ID","CategoryName")'>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Dosya seciniz</label>
+        <input type="file" name="formFile" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-primary"> Ürün güncelle</button>
+    </div>
+    <div class="text-danger" asp-validation-summary="ModelOnly">
+    </div>
+</form>

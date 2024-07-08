@@ -1,0 +1,49 @@
+﻿@model UserSignInPageVm 
+<center>
+    <h3>
+        Giriş sayfasına hoşgeldiniz
+    </h3>
+</center>
+   
+
+
+<form class="form-signin" asp-action="SignIn" asp-controller="Home" method="post">
+    <h1>@TempData["message"]</h1>
+    <input type="hidden" asp-for="UserSignInRequestModel.ReturnUrl" />
+    <h2 class="form-signin-heading">Giriş Yap</h2>
+    <div class="login-wrap">
+       
+        <span asp-validation-for="UserSignInRequestModel.UserName" class="text-danger"></span>
+        <input asp-for="UserSignInRequestModel.UserName" type="text" class="form-control" placeholder="Kullanıcı İsmi" autofocus>
+
+
+        <span asp-validation-for="UserSignInRequestModel.Password" class="text-danger"> </span>
+        <input asp-for="UserSignInRequestModel.Password" type="password" class="form-control" placeholder="Şifre" autofocus>
+
+        <label class="checkbox">
+            <input asp-for="UserSignInRequestModel.RememberMe" type="checkbox" > Beni hatırla
+
+            <span class="pull-right">
+                <a asp-action="ForgotPassword" asp-controller="Home">Şifremi Unuttum ?</a>
+
+            </span>
+
+
+           
+
+
+        </label>
+        <button class="btn btn-lg btn-login btn-block" type="submit">Giriş Yap</button>
+       
+        <div class="registration">
+            Hesabın Yok mu?
+            <a asp-action="Register" asp-controller="Home">
+               Kayıt ol
+            </a>
+        </div>
+
+    </div>
+
+    <div class="text-danger" asp-validation-summary="ModelOnly">
+    </div>
+   </form>

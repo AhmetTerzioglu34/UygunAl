@@ -1,0 +1,36 @@
+﻿@model AppRolePageVM
+<h1>Rol atamaya hoşgeldiniz</h1>
+<h1>
+    @TempData["message"]
+</h1>
+<form asp-action="AssignRole" asp-controller="User" method="post" >
+
+    <input type="hidden" asp-for="UserID" />
+
+    <div class="list-group">
+
+     
+        @for(int i = 0; i < Model.Roles.Count; i++)
+        {
+            <input type="hidden" asp-for="@Model.Roles[i].RoleName" />
+            <input type="hidden" asp-for="@Model.Roles[i].RoleID" />
+
+            <label class="list-group-item">
+                <input class="form-check-input me-1" asp-for="Roles[i].Checked" /> @Model.Roles[i].RoleName
+            </label>
+           
+        }
+
+    </div>
+
+    <br /><br />
+
+    <div class="mb-3">
+        <button class="btn btn-primary">Kaydet</button>
+    </div>
+
+
+
+
+
+</form>

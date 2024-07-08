@@ -1,0 +1,195 @@
+﻿@model OrderRequestPageVm
+
+<form asp-controller="Shopping" asp-action="ConfirmOrder" method="post">
+    <h1>
+        @TempData["message"]
+    </h1>
+    <h2 class="text-danger">
+        Lütfen kart bilgilerinizde boşluk bırakmayınız
+    </h2>
+    <br /><br /><br />
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            Gonderim Adresi
+            <span asp-validation-for="OrderPureVm.ShippingAddress" class="text-danger">
+
+            </span>
+        </label>
+
+        <div class="col-sm-10">
+            <input type="text" asp-for="OrderPureVm.ShippingAddress" class="form-control" />
+           
+        </div>
+
+    </div>
+    <br /><br /><br />
+
+    @if (!User.Identity.IsAuthenticated)
+    {
+
+        <div class="form-group">
+            <label class="col-sm-2">
+                Email adresi
+                <span asp-validation-for="OrderPureVm.Email" class="text-danger">
+
+                </span>
+            </label>
+
+            <div class="col-sm-10">
+                <input type="text" asp-for="OrderPureVm.Email" class="form-control" />
+
+            </div>
+        </div>
+        <br />
+
+        <br />
+
+        <br />
+
+        
+
+        <div class="form-group">
+            <label class="col-sm-2">
+                İsim soyisim
+                <span asp-validation-for="OrderPureVm.NameDescription" class="text-danger">
+
+                </span>
+            </label>
+
+            <div class="col-sm-10">
+                <input type="text" asp-for="OrderPureVm.NameDescription" class="form-control" />
+                
+            </div>
+        </div>
+        <br />
+
+        <br />
+
+        <br />
+    }
+
+    
+   @*  <div class="form-group">
+        <label class="col-sm-2">
+            Kart Numarası
+            <span asp-validation-for="PaymentRequestPureVm.CardNumber" class="text-danger">
+
+            </span>
+        </label>
+
+        <div class="col-sm-10">
+            <input type="text" asp-for="PaymentRequestPureVm.CardNumber" class="form-control" />
+           
+        </div>
+    </div> *@
+    <div class="form-group">
+        <label class="col-sm-2">
+            Kart Numarası
+            <span asp-validation-for="PaymentRequestPureVm.CardNumber" class="text-danger">
+
+            </span>
+        </label>
+
+        <div class="col-sm-10">
+            <input type="text" asp-for="PaymentRequestPureVm.CardNumber" class="form-control" id="cardNumber" maxlength="19" oninput="formatCardNumber()" required />
+        </div>
+    </div>
+    <br /><br /><br />
+    <div class="form-group">
+        <label class="col-sm-2">
+            Güvenlik Numarası(CVC)
+            <span asp-validation-for="PaymentRequestPureVm.CVC" class="text-danger">
+
+            </span>
+        </label>
+
+        <div class="col-sm-10">
+            <input type="text" asp-for="PaymentRequestPureVm.CVC" class="form-control" />
+
+        </div>
+    </div>
+    <br /><br /><br />
+    <div class="form-group">
+        <label class="col-sm-2">
+            Gecerlilik süresi(Yıl)
+            <span asp-validation-for="PaymentRequestPureVm.ExpiryYear" class="text-danger">
+
+            </span>
+        </label>
+
+        <div class="col-sm-10">
+            <input type="text" asp-for="PaymentRequestPureVm.ExpiryYear" class="form-control" />
+
+        </div>
+    </div>
+    <br /><br /><br />
+    <div class="form-group">
+        <label class="col-sm-2">
+            Gecerlilik süresi(Ay)
+            <span asp-validation-for="PaymentRequestPureVm.ExpiryMonth" class="text-danger">
+
+            </span>
+        </label>
+
+        <div class="col-sm-10">
+            <input type="text" asp-for="PaymentRequestPureVm.ExpiryMonth" class="form-control" />
+
+        </div>
+    </div>
+    <br /><br /><br />
+    <div class="form-group">
+        <label class="col-sm-2">
+            Kart üzerindeki isim
+            <span asp-validation-for="PaymentRequestPureVm.CardUserName" class="text-danger">
+
+            </span>
+        </label>
+
+        <div class="col-sm-10">
+            <input type="text" asp-for="PaymentRequestPureVm.CardUserName" class="form-control" />
+
+        </div>
+    </div>
+    <br /><br /><br />
+    <div class="form-group">
+        <label class="col-sm-2">
+            Onaylamak icin tıklayınız
+        </label>
+
+        <div class="col-sm-10">
+            <button class="btn btn-primary">Onayla</button>
+
+        </div>
+    </div>
+
+
+</form>
+
+
+
+
+
+
+
+
+
+
+<script>
+    function formatCardNumber() {
+        let cardNumberInput = document.getElementById("cardNumber");
+        let cardNumber = cardNumberInput.value;
+
+        // Kart numarasında sadece rakamları ve boşlukları bırak
+        cardNumber = cardNumber.replace(/\D/g, "");
+
+        // Her 4 karakterde bir boşluk ekle
+        cardNumber = cardNumber.replace(/(\d{4})(?=\d)/g, "$1 ");
+
+        // 16 karakterden fazla girilmesini engelle
+        if (cardNumber.length > 19) {
+            cardNumber = cardNumber.slice(0, 19);
+        }
+
+        cardNumberInput.value = cardNumber;
+    }
+</script>

@@ -1,0 +1,117 @@
+﻿@model EntityAttributePageVm
+<h1>
+    @TempData["message"]
+</h1>
+
+
+
+    <form>
+
+
+        @for (int i = 0; i < Model.EntityAttributePureVms.Count; i++)
+        {
+            <input type="hidden" asp-for="EntityAttributePureVms[i].ID" />
+        }
+
+        @{
+            int productId = Model.EntityAttributeProductPureVms.FirstOrDefault().ProductID ;
+        }
+
+        <input type="hidden" asp-for="EntityAttributeProductPureVms[0].ProductID" />
+
+       
+
+        <a asp-action="AttributeProduct" asp-controller="Attribute" asp-route-id="@productId" class="btn btn-primary"><strong>Özellik eklemek için tıkla</strong> </a>
+        <a asp-action="GetProducts" asp-controller="Product" class="btn btn-primary" ><strong >Ürünleri görmek için tıkla</strong> </a>
+
+        <h1>Özelliker listesi</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <section class="panel tasks-widget">
+                    <header class="panel-heading">
+                        @for (int i = 0; i < Model.EntityAttributeProductPureVms.Count; i++)
+                        {
+                            <span>@Model.EntityAttributeProductPureVms[i].ProductID</span> <span>ID'li ürünün özelikleri</span>
+                            break;
+                        }
+                    </header>
+                    <div class="panel-body">
+
+                        <div class="task-content">
+
+                            <ul class="task-list">
+                            @for (int i = 0; i < Model.EntityAttributePureVms.Count; i++ )
+                                {
+                                    <li style="border-bottom: 1px solid #ddd; padding: 3px 0;">
+                                        <div class="task-title" style="display: flex; align-items: center; justify-content: space-between;">
+                                            <div>
+                                                <strong>ID =</strong>
+                                                <span class="task-title-sp">
+                                                    @Model.EntityAttributePureVms[i].ID
+                                                </span>
+                                                <strong>Özellik ismi =</strong>
+                                                <span class="task-title-sp">
+                                                    @Model.EntityAttributePureVms[i].AttributeName
+                                                </span>
+                                            @for (int j = 0; j < Model.EntityAttributeProductPureVms.Count; j++)
+                                            {
+                                   
+                                        
+                                            
+                                               
+                                                
+                                                
+                                                <strong>Değeri =</strong>
+                                                <span class="task-title-sp">
+                                                                @(Model.EntityAttributeProductPureVms[i].Value ?? "null")
+                                                </span>
+                                            
+                                                       
+                                       
+                                                
+                                                break;
+
+                                            }
+                                            </div>
+                                            <div>
+                                                <a asp-controller="Attribute" asp-action="UpdateAttribute"
+                                                   asp-route-productId="@Model.EntityAttributeProductPureVms[i].ProductID"
+                                                   asp-route-attributeId="@Model.EntityAttributePureVms[i].ID" class="btn btn-danger"><i class="icon-pencil"></i></a>
+                                                <a asp-controller="Attribute" asp-action="DestroyAttribute"
+                                                   asp-route-productId="@Model.EntityAttributeProductPureVms[i].ProductID"
+                                                   asp-route-attributeId="@Model.EntityAttributePureVms[i].ID" class="btn btn-danger"><i class="icon-trash"></i></a>
+                                            </div>
+                                        </div>
+                                    </li>
+                             }
+                           
+                                </li>
+                            
+                            </ul>
+                        </div>
+
+
+                    </div>
+                </section>
+            </div>
+        </div>
+
+
+
+    </form>
+   
+
+
+           
+        
+
+     
+
+
+
+
+   
+
+
+
+

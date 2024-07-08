@@ -1,0 +1,40 @@
+﻿@model UpdateCategoryPageVm
+
+
+<h1>
+    Kategori güncellemeye hoşgeldiniz
+
+</h1>
+<h1>
+   @TempData["message"]
+</h1>
+<form asp-action="UpdateCategory" asp-controller="Category" method="post" class="p-3 w-75 m-auto">
+
+    <input type="hidden"  asp-for="UpdateCategoryPureVm.ID"/>
+
+    <div class="form-group">
+        <label>
+            <span asp-validation-for="UpdateCategoryPureVm.CategoryName" class="text-danger">
+
+            </span>
+        </label>
+        <input asp-for="UpdateCategoryPureVm.CategoryName" class="form-control" placeholder="Kategori ismi giriniz" />
+    </div>
+
+
+    <div class="form-group">
+        <label>
+            <span asp-validation-for="UpdateCategoryPureVm.Description" class="text-danger">
+
+            </span>
+        </label>
+        <input asp-for="UpdateCategoryPureVm.Description" class="form-control" placeholder="Açıklama giriniz" />
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-primary"> Kategoriyi güncelle</button>
+
+    </div>
+ 
+
+</form>

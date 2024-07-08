@@ -1,0 +1,29 @@
+﻿@model GetAppRolePageVm
+
+
+
+<a class="btn btn-primary" asp-action="Create" asp-controller="Role">Yeni Rol Ekle</a>
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Rol Ismi</th>
+            <th>Yaratılma Tarihi</th>
+            <th>Sil</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (GetRolesPureVm item in Model.GetRolesPureVms)
+        {
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.RoleName</td>
+                <td>@item.CreatedDate</td>
+                <td><a class="btn btn-danger" asp-action="DestroyRole"  asp-route-id="@item.ID"> Sil</a> </td>
+            </tr>
+        }
+    </tbody>
+</table>

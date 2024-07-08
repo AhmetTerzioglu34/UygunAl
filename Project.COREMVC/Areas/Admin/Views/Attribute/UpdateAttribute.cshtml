@@ -1,0 +1,45 @@
+﻿@model UpdateAttributeProductPageVm
+
+<h1>
+    @TempData["message"]
+</h1>
+
+
+<form asp-action="UpdateAttribute" asp-controller="Attribute" method="post" class="p-3 w-75 m-auto">
+
+
+   
+
+    <input type="hidden" asp-for="UpdateAttributeProductPureVm.ProductID" />
+    <input type="hidden" asp-for="UpdateAttributeProductPureVm.EntityAttributeID" />
+    <input type="hidden" asp-for="UpdateAttributePureVm.AttributeID" />
+
+
+
+    <div class="form-group">
+        <label>
+            <span asp-validation-for="UpdateAttributePureVm.AttributeName" class="text-danger">
+
+            </span>
+        </label>
+        <input asp-for="UpdateAttributePureVm.AttributeName" class="form-control" placeholder="Özellik ismi giriniz" />
+    </div>
+
+
+    <div class="form-group">
+        <label>
+            <span asp-validation-for="UpdateAttributeProductPureVm.Value" class="text-danger">
+
+            </span>
+        </label>
+        <input asp-for="UpdateAttributeProductPureVm.Value" class="form-control" placeholder="Değerini giriniz" />
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-primary"> Özelliği güncelle</button>
+
+    </div>
+    <a asp-controller="Attribute" asp-action="GetAttributeProduct" asp-route-id="@Model.UpdateAttributeProductPureVm.ProductID" class="btn btn-success">Özellikleri gör</a>
+  
+
+</form>

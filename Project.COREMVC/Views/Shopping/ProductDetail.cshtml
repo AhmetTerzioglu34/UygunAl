@@ -1,0 +1,100 @@
+﻿@model ProductDetailPageVm
+
+<form asp-action="ProductDetail" asp-controller="Shopping" method="post" class="p-3 w-75 m-auto" enctype="multipart/form-data">
+    <div class="col-md-9">
+        <input type="hidden" asp-for="ProductDetailPureVm.ID" />
+        <input type="hidden" asp-for="ProductDetailPureVm.ImagePath" />
+        <section class="panel">
+            <div class="panel-body">
+                <div class="col-md-6">
+                    <div class="pro-img-details">
+                        <img src="@Model.ProductDetailPureVm.ImagePath" alt="" />
+
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <h4 class="pro-d-title">
+                        <a href="#" class="">
+                            @Model.ProductDetailPureVm.ProductName
+                        </a>
+                    </h4>
+                    <p>
+                        
+                        
+
+                    </p>
+                    <div class="product_meta">
+                        <span class="posted_in"> <strong>Categories:</strong> <a rel="tag" href="#">@Model.ProductDetailPureVm.CategoryName</a>.</span>
+
+                    </div>
+                    <div class="m-bot15"> <strong>Price : </strong> <span class="amount-old">$@(Model.ProductDetailPureVm.UnitPrice + 100)</span>  <span class="pro-price"> $@Model.ProductDetailPureVm.UnitPrice</span></div>
+                    @* <div class="form-group">
+                        <label>Adedi</label>
+                        <input asp-for="CartItemForProductDetailPureVm.Amount" type="quantity" placeholder="1" class="form-control quantity">
+                    </div> *@
+                     <p>
+                       @*  <a asp-controller="Shopping" asp-action="AddToCart" asp-route-id="@Model.ProductDetailPureVm.ID" class="btn btn-round btn-danger" role="button">
+                            <i class="icon-shopping-cart"></i> Sepete ekle
+                        </a> *@
+                       @*  <a asp-action="AddToCart" asp-controller="Shopping" asp-route-id="@Model.ProductDetailPureVm.ID">
+                           <button class="btn btn-primary"><i class="icon-shopping-cart"></i> Sepete ekle </button>
+                       </a>  *@
+
+                        <a asp-action="AddToCart"  asp-route-id="@Model.ProductDetailPureVm.ID" class="btn btn-primary">
+                           Sepete ekle
+                        </a>
+                    </p> 
+                </div>
+            </div>
+        </section>
+
+        <section class="panel">
+            <header class="panel-heading tab-bg-dark-navy-blue">
+                <ul class="nav nav-tabs ">
+                    <li class="active">
+                        <a data-toggle="tab" href="#description">
+                            Özellikleri
+                        </a>
+                    </li>
+
+
+                </ul>
+            </header>
+            <div class="panel-body">
+                <div class="tab-content tasi-tab">
+                    <div id="description" class="tab-pane active">
+                        <h4 class="pro-d-head">Ürün özelliği</h4>
+                       
+
+                        <ul class="detail-attr-container">
+                            <li class="detail-attr-item">
+                                <span>
+                                    @foreach (AttributePureVm item in Model.AttributePureVms)
+                                    {
+                                        <tr>
+                                            <td><b>@item.AttributeName =  </b> @item.ValueName </td>
+                                            <br />
+                                        </tr>
+                                    }
+                                    
+                                </span> 
+
+
+
+
+                               
+                            </li>
+
+                                
+                        </ul>
+                    </div>
+                   
+
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+</form>

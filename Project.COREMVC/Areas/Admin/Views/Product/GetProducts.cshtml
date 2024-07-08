@@ -1,0 +1,66 @@
+﻿@model ProductPageVm
+
+<h1>
+    @TempData["message"]
+</h1>
+
+
+
+
+
+
+
+
+<section class="panel">
+    <header class="panel-heading">
+        DataTables hidden row details example
+    </header>
+    <div class="panel-body">
+        <div class="adv-table">
+            <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+                <thead>
+                    <tr>
+                        <th> Ürün ID</th>
+                        <th>Ürün ismi</th>
+                        <th class="hidden-phone">Stok Sayısı</th>
+                        <th class="hidden-phone">Fiyatı</th>
+                        <th class="hidden-phone">Kategorisi</th>
+                        <th class="hidden-phone">Resim</th>
+                        <th class="hidden-phone">Durumu</th>
+                        <th class="hidden-phone">Güncelle</th>
+                        <th class="hidden-phone">Sil</th>
+                        <th class="hidden-phone">Yok et</th>
+                        <th class="hidden-phone">Özellik ekle</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (ProductPureVm item in Model.ProductPureVms)
+                    {
+                        <tr class="gradeX">
+                            <td>@item.ID</td>
+                            <td>
+                                @item.ProductName
+                            </td>
+                            <td class="hidden-phone">@item.UnitsInStock</td>
+                            <td class="hidden-phone">@item.UnitPrice</td>
+                            <td class="hidden-phone">@item.CategoryName</td>
+                            <td><img width="30" height="30" src="@item.ImagePath" /></td>
+                            <td class="center hidden-phone">@item.Status</td>
+                            <td class="center hidden-phone"><a asp-action="UpdateProduct" asp-route-id="@item.ID" class="btn btn-warning">Güncelle</a></td>
+                            <td class="center hidden-phone"><a asp-action="DeleteProduct" asp-route-id="@item.ID" class="btn btn-primary">Sil</a></td>
+                            <td class="center hidden-phone"><a asp-action="DestroyProduct" asp-route-id="@item.ID" class="btn btn-danger">Yok Et</a></td>
+                            <td class="center hidden-phone"><a asp-action="GetAttributeProduct" asp-controller="Attribute" asp-route-id="@item.ID" class="btn btn-success">Özellik listele</a></td>
+
+                        </tr>
+                    }
+
+
+
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</section>

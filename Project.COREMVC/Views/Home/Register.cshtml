@@ -1,0 +1,136 @@
+﻿@model UserRegisterPageVm
+<center>
+    <h3>
+        Register'a hoşgeldiniz
+        @TempData["message"]
+    </h3>
+</center>
+
+
+
+<form asp-action="Register" asp-controller="Home" method="post" class="form-signin" >
+    <h2 class="form-signin-heading">Kayıt ol</h2>
+    <div class="login-wrap">
+        <p>
+            Kişisel bilgilerinizi aşağıya girin
+        </p>
+        <span asp-validation-for="UserRegisterModel.UserName" class="text-danger">
+
+        </span>
+        <input type="text" class="form-control" asp-for="UserRegisterModel.UserName" class="form-control" placeholder="Kullanıcı ismi giriniz" autofocus>
+
+
+        <span asp-validation-for="UserRegisterModel.Email" class="text-danger"> </span>
+        <input type="text" asp-for="UserRegisterModel.Email" class="form-control" placeholder="Email giriniz" autofocus>
+       
+
+        <span asp-validation-for="UserRegisterModel.Password" class="text-danger"> </span>
+        <input type="password"  asp-for="UserRegisterModel.Password" class="form-control" placeholder="Şifre giriniz" autofocus>
+
+
+        <span asp-validation-for="UserRegisterModel.ConfirmPassword" class="text-danger"> </span>
+        <input type="password" asp-for="UserRegisterModel.ConfirmPassword" class="form-control" placeholder="Tekrardan şifrenizi giriniz" autofocus>
+
+       
+        <button class="btn btn-lg btn-login btn-block" type="submit">Kayıt ol</button>
+
+        <div class="registration">
+            Zaten bir hesabın Varmı ?
+            <a asp-action="SignIn" asp-controller="Home">
+
+                Giriş yap
+
+            </a>
+        </div>
+
+            <div class="text-danger" asp-validation-summary="ModelOnly">
+            </div>
+    </div>
+   
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* <form asp-action="Register" asp-controller="Home" method="post" class="p-3 w-75 m-auto">
+
+    
+    <div class="form-group">
+        <label>
+            <span asp-validation-for="UserRegisterModel.UserName" class="text-danger">
+
+            </span>
+        </label>
+        <input asp-for="UserRegisterModel.UserName" class="form-control" placeholder="Kullanıcı ismi giriniz" />
+    </div>
+   
+
+    <div class="form-group">
+        <label>
+            <span asp-validation-for="UserRegisterModel.Password" class="text-danger"> 
+
+            </span>
+        </label>
+        <input asp-for="UserRegisterModel.Password" class="form-control" placeholder="Şifre giriniz" />
+    </div>
+
+    <div class="form-group">
+        <label>
+            <span asp-validation-for="UserRegisterModel.ConfirmPassword" class="text-danger">
+
+            </span>
+        </label>
+        <input asp-for="UserRegisterModel.ConfirmPassword" class="form-control" placeholder="Tekrardan şifrenizi giriniz" />
+    </div>
+
+    <div class="form-group">
+        <label>
+            <span asp-validation-for="UserRegisterModel.Email" class="text-danger">
+
+            </span>
+        </label>
+        <input asp-for="UserRegisterModel.Email" class="form-control" placeholder="Email giriniz" />
+    </div>
+
+
+
+    <div>
+        Zaten bir hesabın Varmı ?
+        <a asp-action="SignIn" asp-controller="Home">
+
+            Giriş yap
+
+        </a>
+    </div>
+    <br /> <br />
+
+    <div class="form-group">
+        <button class="btn btn-primary">Kayıt ol</button>
+    </div>
+
+    
+
+    <div class="text-danger" asp-validation-summary="ModelOnly">
+    </div>
+
+</form>
+ *@

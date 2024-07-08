@@ -1,0 +1,60 @@
+﻿@model CategoryPageVm
+
+<h1>
+    @TempData["message"]
+</h1>
+
+
+
+
+
+
+
+
+
+<section class="panel">
+    <header class="panel-heading">
+        DataTables hidden row details example
+    </header>
+    <div class="panel-body">
+        <div class="adv-table">
+            <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+                <thead>
+                    <tr>
+                        <th> Kategori ID</th>
+                        <th>Kategori ismi</th>
+                        <th class="hidden-phone">Açıklaması</th>
+                        <th class="hidden-phone">Durumu</th>
+                        <th class="hidden-phone">Güncelle</th>
+                        <th class="hidden-phone">Sil</th>
+                        <th class="hidden-phone">Yok et</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (CategoryPureVm item in Model.CategoryPureVms)
+                    {
+                        <tr class="gradeX">
+                            <td>@item.ID</td>
+                            <td>
+                                @item.CategoryName
+                            </td>
+                            <td class="hidden-phone">@item.Description</td>
+                            
+                            <td class="center hidden-phone">@item.Status</td>
+                            <td class="center hidden-phone"><a asp-action="UpdateCategory" asp-route-id="@item.ID" class="btn btn-warning">Güncelle</a></td>
+                            <td class="center hidden-phone"><a asp-action="DeleteCategory" asp-route-id="@item.ID" class="btn btn-danger">Sil</a></td>
+                            <td class="center hidden-phone"><a asp-action="DestroyCategory" asp-route-id="@item.ID" class="btn btn-danger">Yok Et</a></td>
+
+                        </tr>
+                    }
+
+
+
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</section>

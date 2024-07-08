@@ -1,0 +1,31 @@
+﻿
+@model AppUserPageVm
+
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Kullanıcı İsmi</th>
+            <th>Email Adresi</th>
+            <th>Rolleri</th>
+            <th>Rol Ata</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (AppUserPureVm item in Model.AppUserPureVms)
+        {
+            <tr>
+                <td>@item.UserName</td>
+                <td>@item.Email</td>
+
+
+                <td> <getUserInfo user-id="item.ID"></getUserInfo> </td>
+   
+
+                <td><a asp-action="AssignRole" asp-route-id="@item.ID" class="btn btn-primary">Rol Ata</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
