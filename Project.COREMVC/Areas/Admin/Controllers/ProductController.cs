@@ -104,11 +104,7 @@ namespace Project.COREMVC.Areas.Admin.Controllers
             }
 
            
-            //EntityAttribute entityAttribute = new()
-            //{
-            //    AttributeName = createProductPageVm.EntityAttributePureVm.AttributeName,
-                
-            //};
+          
 
             Product p = new Product()
             {

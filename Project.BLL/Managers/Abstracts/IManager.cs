@@ -1,4 +1,5 @@
-﻿using Project.ENTITIES.Interfaces;
+﻿using Project.BLL.DTOs;
+using Project.ENTITIES.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +9,12 @@ using System.Threading.Tasks;
 
 namespace Project.BLL.Managers.Abstracts
 {
-    public interface IManager<T> where T : IEntity
-    {//List Command
+    public interface IManager<T/*,X*/> where T : IEntity /*where X : BaseDTO*/
+    {
+        //List Commands
 
         List<T> GetAll();
         List<T> GetActives();
-
-        //Todo: GetActivesAsync
         Task<List<T>> GetActivesAsync();
         List<T> GetPassives();
         List<T> GetModifieds();
@@ -22,17 +22,14 @@ namespace Project.BLL.Managers.Abstracts
         //Modify Commands
         string Add(T item);
         Task AddAsync(T item);
-        Task<string> AddRangeAsync(List<T> list);
-        string AddRange(List<T> list);
+      
         void Delete(T item);
-        void DeleteRange(List<T> list);
+       
         Task UpdateAsync(T item);
         void UpdateForJunction(T item , T originalEntity);
-        Task UpdateRangeAsync(List<T> list);
+       
         string Destroy(T item);
-        string DestroyRange(List<T> list);
-
-        List<string> DestroyRangeWithText(List<T> list);
+      
 
         //Linq Commands
         List<T> Where(Expression<Func<T, bool>> exp);

@@ -134,7 +134,7 @@ namespace Project.COREMVC.Controllers
 
             TempData["message"] = $"{ci.ProductName} isimli ürün sepete eklenmiştir";
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { productToBeAdded.CategoryID });
         }
 
         // Bu metottada sepeti session'a eklemiş bulnmaktayız
@@ -206,20 +206,7 @@ namespace Project.COREMVC.Controllers
 
             return RedirectToAction("CartPage");
         }
-        //public async Task<IActionResult> IncreaseFromCart(int id)
-        //{
-        //    Product product = await _productManager.FindAsync(id);
-
-        //    if (product.UnitsInStock != null)
-        //    {
-        //        Cart c = GetCartFromSession("scart");
-        //        CartPageVm cartPageVm = new CartPageVm();
-        //        cartPageVm.Cart = c;
-        //        cartPageVm.Cart.AddToCart();
-        //        SetCartForSession(cartPageVm.Cart);
-        //        ControlCart(cartPageVm.Cart);
-        //    }
-        //}
+     
         public IActionResult ConfirmOrder()
         {
             return View();
@@ -283,7 +270,7 @@ namespace Project.COREMVC.Controllers
                     };
 
                     Product product = await _productManager.FindAsync(item.ID);
-                    product.UnitsInStock -= item.Amount;
+                        product.UnitsInStock -= item.Amount;
                     await _productManager.UpdateAsync(product);
 
                     await _orderDetailManager.AddAsync(orderDetail);

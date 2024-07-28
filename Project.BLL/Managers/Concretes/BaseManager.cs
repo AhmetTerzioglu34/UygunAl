@@ -19,42 +19,21 @@ namespace Project.BLL.Managers.Concretes
         {
             _iRep = iRep;
         }
-        void SaatEkle(T item)
-        {
-            item.CreatedDate = item.CreatedDate.AddHours(3);
-        }
+       
 
         public virtual string Add(T item)
         {
-            SaatEkle(item);
+            
             _iRep.Add(item);
             return "Ekleme basarılıdır";
         }
 
         public async Task AddAsync(T item)
         {
-            SaatEkle(item);
+            
             await _iRep.AddAsync(item);
         }
-        bool ElemanKontrolEt(List<T> list)
-        {
-            if (list.Count > 10) return false;
-            return true;
-        }
-        public string AddRange(List<T> list)
-        {
-            if (!ElemanKontrolEt(list)) return "Maksimum 10 veri ekleyebileceginiz icin işlem gerçekleştirilemedi ";
-            _iRep.AddRange(list);
-            return "Ekleme basarılı bir şekilde gerçekleştirildi";
-        }
-
-        public async Task<string> AddRangeAsync(List<T> list)
-        {
-            if (!ElemanKontrolEt(list)) return "Maksimum 10 veri ekleyebileceginiz icin işlem gerçekleştirilemedi ";
-            await _iRep.AddRangeAsync(list);
-            return "Ekleme basarılıdır";
-        }
-
+       
         public bool Any(Expression<Func<T, bool>> exp)
         {
             return _iRep.Any(exp);
@@ -74,21 +53,8 @@ namespace Project.BLL.Managers.Concretes
             _iRep.Delete(item);
         }
 
-        public void DeleteRange(List<T> list)
-        {
-            _iRep.DeleteRange(list);
-        }
+       
 
-        //public string Destroy(T item)
-        //{
-        //    if (item.Status == ENTITIES.Enums.DataStatus.Deleted)
-        //    {
-        //        _iRep.Destroy(item);
-        //        return "Veri basarıyla yok edildi";
-        //    }
-        //    //throw new Exception("Silme durumunda hata ile karsılasıldı");
-        //    return $"Veriyi silemezsiniz cünkü {item.ID} id'sine sahip veri pasif degil";
-        //}
 
 
         public string Destroy(T item) //Aşağıdaki algoritmanın amacı kişi içerisinde ürünler olan kategoriyi silebilir
@@ -114,26 +80,7 @@ namespace Project.BLL.Managers.Concretes
             }
             return $"Veriyi silemezsiniz cünkü {item.ID} id'sine sahip veri pasif degil";
         }
-            public string DestroyRange(List<T> list)
-        {
-            foreach (T item in list) return Destroy(item);
-
-            return "Silme işleminde bir sorunla karsılasıldı lütfen veri durumunun pasif oldugundan emin olunuz";
-        }
-
-        public List<string> DestroyRangeWithText(List<T> list)
-        {
-            List<string> metinler = new List<string>();
-            if (list == null || list.Count == 0)
-            {
-                metinler.Add("Listeye girilemedi");
-                return metinler;
-            }
-
-            foreach (T item in list) metinler.Add(Destroy(item));
-            return metinler;
-        }
-
+       
         public async Task<T> FindAsync(int id)
         {
             return await _iRep.FindAsync(id);
@@ -202,10 +149,7 @@ namespace Project.BLL.Managers.Concretes
         {
             _iRep.UpdateForJunction(item, originalEntity);
         }
-        public async Task UpdateRangeAsync(List<T> list)
-        {
-            await _iRep.UpdateRangeAsync(list);
-        }
+      
 
         public List<T> Where(Expression<Func<T, bool>> exp)
         {

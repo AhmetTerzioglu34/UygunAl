@@ -37,17 +37,9 @@ namespace Project.DAL.Repositories.Concrates
             Save();
         }
 
-        public void AddRange(List<T> list)
-        {
-            _db.Set<T>().AddRange(list);
-            Save();
-        }
+       
 
-        public async Task AddRangeAsync(List<T> list)
-        {
-            await _db.Set<T>().AddRangeAsync(list);
-            Save();
-        }
+       
 
         public bool Any(Expression<Func<T, bool>> exp)
         {
@@ -66,22 +58,14 @@ namespace Project.DAL.Repositories.Concrates
             Save();
         }
 
-        public void DeleteRange(List<T> list)
-        {
-            foreach (T item in list) Delete(item);
-        }
-
+       
         public void Destroy(T item)
         {
             _db.Set<T>().Remove(item);
             Save();
         }
 
-        public void DestroyRange(List<T> list)
-        {
-            _db.Set<T>().RemoveRange(list);
-            Save();
-        }
+       
 
         public async Task<T> FindAsync(int id)
         {
@@ -159,10 +143,7 @@ namespace Project.DAL.Repositories.Concrates
             _db.Entry(originalEntity).CurrentValues.SetValues(item);
             Save();
         }
-        public async Task UpdateRangeAsync(List<T> list)
-        {
-            foreach (T item in list) await UpdateAsync(item);
-        }
+       
 
         public List<T> Where(Expression<Func<T, bool>> exp)
         {

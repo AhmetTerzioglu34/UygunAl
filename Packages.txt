@@ -1,0 +1,23 @@
+* Project.BLL : 
+-FluentValidation.AspNetcore (CustomIdentityService class'ý için)
+
+
+* Project.DAL : 
+-BOGUS (Fake,test data ekleme...)
+-Microsoft.EntityFrameworkCore.Proxies (LazyLoading...)
+-Microsoft.EntityFrameworkCore.Tools (Migration ve Package Manager Console'da terminal kodlarýn anlaþýlmasý için...)
+
+
+*Project.CONF : 
+-Microsoft.EntityFrameworkCore.SqlServer (Sql ile baðlantý...)
+
+
+*Project.ENTITIES : 
+-Microsoft.AspNetCore.Identity.EntityFrameworkCore
+
+
+*Project.CoreMVC (UI) : 
+-Microsoft.EntityFrameworkCore.Design (.Net Core MVC'den baðýmsýz bir katmanda Core Identity yapýsý kullanýlacaksa bu kütüphane indirilmek zorundadýr.)
+-Newtonsoft.Json (Json format...)
+-X.PagedList (Sayfalama...)
+-X.PagedList.Mvc.Core

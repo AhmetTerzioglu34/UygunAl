@@ -12,7 +12,7 @@ namespace Project.COREMVC.Models.PureVms.Products
        
         public string CategoryName { get; set; }
 
-        public string AttributeName { get; set; }
+        //public string AttributeName { get; set; }
 
     }
 }

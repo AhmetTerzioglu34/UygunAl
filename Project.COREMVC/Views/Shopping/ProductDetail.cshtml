@@ -65,28 +65,21 @@
                 <div class="tab-content tasi-tab">
                     <div id="description" class="tab-pane active">
                         <h4 class="pro-d-head">Ürün özelliği</h4>
-                       
+
 
                         <ul class="detail-attr-container">
                             <li class="detail-attr-item">
                                 <span>
-                                    @foreach (AttributePureVm item in Model.AttributePureVms)
-                                    {
-                                        <tr>
-                                            <td><b>@item.AttributeName =  </b> @item.ValueName </td>
-                                            <br />
-                                        </tr>
-                                    }
-                                    
-                                </span> 
-
-
-
-
-                               
+                                    <ul class="detail-attr-list">
+                                        @foreach (AttributePureVm item in Model.AttributePureVms)
+                                        {
+                                            <li>
+                                                <b style="color:gray;">@item.AttributeName</b> <b>@item.ValueName</b>
+                                            </li>
+                                        }
+                                    </ul>
+                                </span>
                             </li>
-
-                                
                         </ul>
                     </div>
                    

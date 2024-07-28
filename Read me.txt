@@ -1,6 +1,16 @@
 
-[EmailAddress(ErrorMessage="Email formatýnda giriniz")]
+1 => Yapýlan incelemelere göre ilgili projenin profesyonel olarak Hybrid N-Tier mimarisinde yazýlmasý uygun görülmüþtür.
 
-En son kaldýðýn yer  UpdateAttributePRoduct
+2 => Projede acýlacak katmanlar
+ENTITIES,
+CONF,
+DAL,
+BLL,
+Common (Her katman ortak kullanmak isteyebilecegi sýnýflarýn tutulacagý katman olacaktýr)
+UI(.Net Core MVC olarak düsünülmüþtür)
 
+3 => Projede degiþken isimleri degiþkenler local variable oldugu sürece camelCase, field oldugu sürece basýnda _ sembolü olmak üzere camelCase ; Property , metot ve class isimleri PascalCase standartlarýnda yazýlacaktýr ve projede Türkçe karakter kullanýlmayacaktýr...Class isimleri kesinlikle cogul olmayacaktýr.. Projede ambigiouty (tipi acýk bir þekilde belli olan yapýlarda tipin belirsizligini gösterecek yapýlar var vs... dynamic vs... ) belirten yapýlar kullanýlmayacaktýr. 
 
+4 => Katman isimleri Project ile baslayacak . sembolünden sonra katmansal takýlarla bitecektir(Project.ENTITIES vs... )
+
+5=> Projede Pure View Models ve Page View Models kullanýlacaktýr. (DTO'ya yer verilmedi.)

@@ -23,15 +23,10 @@ namespace Project.DAL.Repositories.Abstracts
         //Modify Commands
         void Add(T item);
         Task AddAsync(T item);
-        Task AddRangeAsync(List<T> list);
-        void AddRange(List<T> list);
         void Delete(T item);
-        void DeleteRange(List<T> list);
         Task UpdateAsync(T item);
         void UpdateForJunction(T item, T originalEntity);
-        Task UpdateRangeAsync(List<T> list);
         void Destroy(T item);
-        void DestroyRange(List<T> list);
 
 
 

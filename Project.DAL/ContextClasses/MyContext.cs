@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 namespace Project.DAL.ContextClasses
 {
     public class MyContext : IdentityDbContext<AppUser, AppRole, int, IdentityUserClaim<int>, AppUserRole, IdentityUserLogin<int>, IdentityRoleClaim<int>, IdentityUserToken<int>>
+
     {
         public MyContext(DbContextOptions<MyContext> opt): base(opt) 
         {

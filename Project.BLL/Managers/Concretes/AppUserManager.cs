@@ -17,9 +17,6 @@ namespace Project.BLL.Managers.Concretes
             _appRep = addRep;
         }
     
-        public async Task<bool> AddUser(AppUser user)
-        {
-            return await _appRep.AddUser(user);
-        }
+      
     }
 }
